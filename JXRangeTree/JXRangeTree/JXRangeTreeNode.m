@@ -28,6 +28,40 @@
     return self;
 }
 
+- (id)initNilNode
+{
+    if(self = [super init])
+    {
+        _leftNode = self;
+        _rightNode = self;
+        _parentNode = self;
+        _isRed = NO;
+        _key = -DBL_MAX;
+        _high = -DBL_MAX;
+        _maxHigh = -DBL_MAX;
+        _object = nil;
+    }
+    
+    return self;
+}
+
+- (id)initRootNodeWithNilNode:(JXRangeTreeNode *)nilNode
+{
+    if(self = [super init])
+    {
+        _leftNode = nilNode;
+        _rightNode = nilNode;
+        _parentNode = nilNode;
+        _isRed = NO;
+        _key = DBL_MAX;
+        _high = DBL_MAX;
+        _maxHigh = DBL_MAX;
+        _object = nil;
+    }
+    
+    return self;
+}
+
 #pragma mark Overlapping interval tree nodes
 
 - (BOOL)overlapsWithRangeWithLowValue:(double)lowValue

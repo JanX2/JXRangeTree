@@ -36,25 +36,9 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 {
     if(self = [super init])
     {
-        _nilNode = [[JXRangeTreeNode alloc] init];
-        _nilNode.leftNode = _nilNode;
-        _nilNode.rightNode = _nilNode;
-        _nilNode.parentNode = _nilNode;
-        _nilNode.isRed = NO;
-        _nilNode.key = -DBL_MAX;
-        _nilNode.high = -DBL_MAX;
-        _nilNode.maxHigh = -DBL_MAX;
-        _nilNode.object = nil;
+        _nilNode = [[JXRangeTreeNode alloc] initNilNode];
         
-        _rootNode = [[JXRangeTreeNode alloc] init];
-        _rootNode.leftNode = _nilNode;
-        _rootNode.rightNode = _nilNode;
-        _rootNode.parentNode = _nilNode;
-        _rootNode.isRed = NO;
-        _rootNode.key = DBL_MAX;
-        _rootNode.high = DBL_MAX;
-        _rootNode.maxHigh = DBL_MAX;
-        _rootNode.object = nil;
+        _rootNode = [[JXRangeTreeNode alloc] initRootNodeWithNilNode:_nilNode];
     }
     return self;
 }

@@ -8,6 +8,11 @@
 
 @interface JXRangeTreeNode ()
 
+#pragma mark Managing life cycle
+
+- (id)initNilNode;
+- (id)initRootNodeWithNilNode:(JXRangeTreeNode *)nilNode;
+
 #pragma mark Accessing properties
 
 @property (nonatomic, readwrite, strong) JXRangeTreeNode*    leftNode;
