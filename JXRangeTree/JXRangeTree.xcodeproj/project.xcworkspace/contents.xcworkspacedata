@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:PWIntervalTree.xcodeproj">
+      location = "self:JXRangeTree.xcodeproj">
    </FileRef>
 </Workspace>

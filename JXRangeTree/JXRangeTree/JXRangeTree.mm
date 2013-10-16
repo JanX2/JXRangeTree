@@ -1,32 +1,32 @@
 //
-//  PWIntervalTree.m
-//  PWFoundation
+//  JXRangeTree.m
+//  JXFoundation
 //
 //
 
-#import "PWIntervalTree-Private.h"
+#import "JXRangeTree-Private.h"
 
-#import "PWInlineVector.hpp"
-#import "PWIntervalTreeNode-Private.h"
+#import "JXInlineVector.hpp"
+#import "JXRangeTreeNode-Private.h"
 #import <float.h>
 #import <algorithm>
 #import <vector>
 
-struct PWIntervalTreeRecursionNode
+struct JXRangeTreeRecursionNode
 {
-    __unsafe_unretained PWIntervalTreeNode* startNode;
+    __unsafe_unretained JXRangeTreeNode* startNode;
     NSUInteger          parentIndex;
     BOOL                tryRightBranch;
 };
 
-typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalTreeRecursionNodes;
+typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRecursionNodes;
 
 #pragma mark -
 
-@implementation PWIntervalTree
+@implementation JXRangeTree
 {
-    PWIntervalTreeNode* _rootNode;
-    PWIntervalTreeNode* _nilNode;
+    JXRangeTreeNode* _rootNode;
+    JXRangeTreeNode* _nilNode;
     NSUInteger          _enumerationCount;
 }
 
@@ -36,7 +36,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
 {
     if(self = [super init])
     {
-        _nilNode = [[PWIntervalTreeNode alloc] init];
+        _nilNode = [[JXRangeTreeNode alloc] init];
         _nilNode.leftNode = _nilNode;
         _nilNode.rightNode = _nilNode;
         _nilNode.parentNode = _nilNode;
@@ -46,7 +46,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
         _nilNode.maxHigh = -DBL_MAX;
         _nilNode.object = nil;
         
-        _rootNode = [[PWIntervalTreeNode alloc] init];
+        _rootNode = [[JXRangeTreeNode alloc] init];
         _rootNode.leftNode = _nilNode;
         _rootNode.rightNode = _nilNode;
         _rootNode.parentNode = _nilNode;
@@ -61,13 +61,13 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
 
 #pragma mark Adding and removing objects
 
-- (PWIntervalTreeNode*)addObject:(id)object forIntervalWithLowValue:(double)lowValue highValue:(double)highValue
+- (JXRangeTreeNode*)addObject:(id)object forIntervalWithLowValue:(double)lowValue highValue:(double)highValue
 {
-    PWIntervalTreeNode* newNode = nil;
+    JXRangeTreeNode* newNode = nil;
     
     if(_enumerationCount == 0)
     {
-        newNode = [[PWIntervalTreeNode alloc] initWithObject:object lowValue:lowValue highValue:highValue];
+        newNode = [[JXRangeTreeNode alloc] initWithObject:object lowValue:lowValue highValue:highValue];
         [self insertNode:newNode];
         
         [self updateMaxHighForNodeAndAncestors:newNode.parentNode];
@@ -75,10 +75,10 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
         newNode.isRed = YES;
         while(newNode.parentNode.isRed)  // use sentinel instead of checking for rootNode
         {
-            PWIntervalTreeNode* grandParentNode = newNode.parentNode.parentNode;
+            JXRangeTreeNode* grandParentNode = newNode.parentNode.parentNode;
             if(newNode.parentNode == grandParentNode.leftNode)
             {
-                PWIntervalTreeNode* rightOfGrandParentNode = grandParentNode.rightNode;
+                JXRangeTreeNode* rightOfGrandParentNode = grandParentNode.rightNode;
                 if(rightOfGrandParentNode.isRed)
                 {
                     newNode.parentNode.isRed = NO;
@@ -101,7 +101,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
             else
             { 
                 NSAssert(newNode.parentNode == grandParentNode.rightNode, nil);
-                PWIntervalTreeNode* leftOfGrandParentNode = grandParentNode.leftNode;
+                JXRangeTreeNode* leftOfGrandParentNode = grandParentNode.leftNode;
                 if(leftOfGrandParentNode.isRed)
                 {
                     newNode.parentNode.isRed = NO;
@@ -144,7 +144,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
     
     if(_enumerationCount == 0)
     {
-        PWIntervalTreeNode* node = [self nodeForIntervalWithLowValue:aLowValue highValue:aHighValue];
+        JXRangeTreeNode* node = [self nodeForIntervalWithLowValue:aLowValue highValue:aHighValue];
         if(node)
             removedObject = [self deleteNode:node];
     }
@@ -155,13 +155,13 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
     return removedObject;
 }
 
-- (void)insertNode:(PWIntervalTreeNode*)node
+- (void)insertNode:(JXRangeTreeNode*)node
 {
     node.rightNode = _nilNode;
     node.leftNode = node.rightNode;
     
-    PWIntervalTreeNode* newParentNode = _rootNode;
-    PWIntervalTreeNode* iterationNode = _rootNode.leftNode;
+    JXRangeTreeNode* newParentNode = _rootNode;
+    JXRangeTreeNode* iterationNode = _rootNode.leftNode;
     while(iterationNode != _nilNode)
     {
         newParentNode = iterationNode;
@@ -184,15 +184,15 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
     NSAssert((_nilNode.maxHigh == -DBL_MAX), @"nilNode.maxHigh != -DBL_MAX in insertNode:");
 }
 
-- (void)balanceNode:(PWIntervalTreeNode*)node
+- (void)balanceNode:(JXRangeTreeNode*)node
 {
-    PWIntervalTreeNode* rootLeftNode = _rootNode.leftNode;
+    JXRangeTreeNode* rootLeftNode = _rootNode.leftNode;
     while((!node.isRed) && (rootLeftNode != node))
     {
-        PWIntervalTreeNode* parentNode = node.parentNode;
+        JXRangeTreeNode* parentNode = node.parentNode;
         if(node == parentNode.leftNode)
         {
-            PWIntervalTreeNode* parentRightNode = parentNode.rightNode;
+            JXRangeTreeNode* parentRightNode = parentNode.rightNode;
             if(parentRightNode.isRed)
             {
                 parentRightNode.isRed = NO;
@@ -223,7 +223,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
         }
         else
         {
-            PWIntervalTreeNode* parentLeftNode = parentNode.leftNode;
+            JXRangeTreeNode* parentLeftNode = parentNode.leftNode;
             if (parentLeftNode.isRed)
             {
                 parentLeftNode.isRed = NO;
@@ -262,20 +262,20 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
     NSAssert((_nilNode.maxHigh == -DBL_MAX),  @"nilNode.maxHigh != -DBL_MAX in balanceNode:");
 }
 
-- (id)deleteNode:(PWIntervalTreeNode*)node
+- (id)deleteNode:(JXRangeTreeNode*)node
 {
     NSAssert(_enumerationCount == 0, nil);
     
     id object = node.object;
     
-    PWIntervalTreeNode* spliceOutNode = ((node.leftNode == _nilNode) || (node.rightNode == _nilNode)) ? node : [self nodeSucceedingNode:node];
-    PWIntervalTreeNode* spliceOutChildNode = (spliceOutNode.leftNode == _nilNode) ? spliceOutNode.rightNode : spliceOutNode.leftNode;
+    JXRangeTreeNode* spliceOutNode = ((node.leftNode == _nilNode) || (node.rightNode == _nilNode)) ? node : [self nodeSucceedingNode:node];
+    JXRangeTreeNode* spliceOutChildNode = (spliceOutNode.leftNode == _nilNode) ? spliceOutNode.rightNode : spliceOutNode.leftNode;
     spliceOutChildNode.parentNode = spliceOutNode.parentNode;
     if(_rootNode == spliceOutNode.parentNode)
         _rootNode.leftNode = spliceOutChildNode;
     else
     {
-        PWIntervalTreeNode* spliceOutParentNode = spliceOutNode.parentNode;
+        JXRangeTreeNode* spliceOutParentNode = spliceOutNode.parentNode;
         if(spliceOutNode == spliceOutParentNode.leftNode)
             spliceOutParentNode.leftNode = spliceOutChildNode;
         else
@@ -292,7 +292,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
 
         node.rightNode.parentNode = spliceOutNode;
         node.leftNode.parentNode = node.rightNode.parentNode;
-        PWIntervalTreeNode* parentNode = node.parentNode;
+        JXRangeTreeNode* parentNode = node.parentNode;
         if(node == parentNode.leftNode)
             parentNode.leftNode = spliceOutNode; 
         else
@@ -333,7 +333,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
 
 - (void)enumerateNodesInIntervalWithLowValue:(double)aLowValue 
                                    highValue:(double)aHighValue
-                                  usingBlock:(void (^)(PWIntervalTreeNode* node, BOOL* stop))block
+                                  usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block
 {
     NSParameterAssert(block);
     
@@ -342,14 +342,14 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
     // To improve performance it would be nice if the recursion node stack could live on the stack with a maximum size.
     // If the size becomes too small it could be copied to the heap.
     
-    PWIntervalTreeRecursionNodes recursionNodeStack;
+    JXRangeTreeRecursionNodes recursionNodeStack;
     
     NSUInteger recursionNodeStackTop = 1;
     NSUInteger currentParentIndex    = 0;
 
     recursionNodeStack[0].startNode = NULL; 
 
-    PWIntervalTreeNode* node = _rootNode.leftNode;
+    JXRangeTreeNode* node = _rootNode.leftNode;
     
     __block BOOL stop = NO;
     
@@ -391,7 +391,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
     
     [self enumerateNodesInIntervalWithLowValue:aLowValue 
                                      highValue:aHighValue
-                                    usingBlock:^(PWIntervalTreeNode* node, BOOL* stop) {
+                                    usingBlock:^(JXRangeTreeNode* node, BOOL* stop) {
                                         [nodesInInterval addObject:node];
                                     }];
     
@@ -404,18 +404,18 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
     
     [self enumerateNodesInIntervalWithLowValue:aLowValue 
                                      highValue:aHighValue
-                                    usingBlock:^(PWIntervalTreeNode* node, BOOL* stop) {
+                                    usingBlock:^(JXRangeTreeNode* node, BOOL* stop) {
                                         [objectsInInterval addObject:node.object];
                                     }];
     
     return objectsInInterval;
 }
 
-- (PWIntervalTreeNode*)nodeForIntervalWithLowValue:(double)aLowValue highValue:(double)aHighValue
+- (JXRangeTreeNode*)nodeForIntervalWithLowValue:(double)aLowValue highValue:(double)aHighValue
 {
-    PWIntervalTreeNode* node = nil;
+    JXRangeTreeNode* node = nil;
     
-    PWIntervalTreeNode* currentNode = _rootNode.leftNode;
+    JXRangeTreeNode* currentNode = _rootNode.leftNode;
     while(currentNode != _nilNode) 
     {
         if ((currentNode.lowValue == aLowValue) && (currentNode.highValue == aHighValue)) 
@@ -437,9 +437,9 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
 
 #pragma mark Accessing preceding and succeeding node 
 
-- (PWIntervalTreeNode*)nodePrecedingNode:(PWIntervalTreeNode*)node
+- (JXRangeTreeNode*)nodePrecedingNode:(JXRangeTreeNode*)node
 {
-    PWIntervalTreeNode* predecessorNode;
+    JXRangeTreeNode* predecessorNode;
 
     if((predecessorNode = node.leftNode) != _nilNode)    // assignment to predecessorNode is intentional
         while(predecessorNode.rightNode != _nilNode)     // returns the maximum of the left subtree of node
@@ -462,9 +462,9 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
     return predecessorNode;
 }
 
-- (PWIntervalTreeNode*)nodeSucceedingNode:(PWIntervalTreeNode*)node
+- (JXRangeTreeNode*)nodeSucceedingNode:(JXRangeTreeNode*)node
 {
-    PWIntervalTreeNode* successorNode;
+    JXRangeTreeNode* successorNode;
     
     if((successorNode = node.rightNode) != _nilNode) // assignment to successorNode is intentional
         while(successorNode.leftNode != _nilNode)        // returns the minium of the right subtree of node
@@ -486,10 +486,10 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
 
 #pragma mark Rotating nodes
 
-- (void)rotateNodeToLeft:(PWIntervalTreeNode*)node
+- (void)rotateNodeToLeft:(JXRangeTreeNode*)node
 {
-    PWIntervalTreeNode* parentNode = node.parentNode;
-    PWIntervalTreeNode* rightNode = node.rightNode;
+    JXRangeTreeNode* parentNode = node.parentNode;
+    JXRangeTreeNode* rightNode = node.rightNode;
     node.rightNode = rightNode.leftNode;
     
     if(rightNode.leftNode != _nilNode)
@@ -514,10 +514,10 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
     NSAssert(_nilNode.maxHigh == -DBL_MAX, @"nilNode.maxHigh != -DBL_MAX in rotateNodeToLeft:");
 }
 
-- (void)rotateNodeToRight:(PWIntervalTreeNode*)node
+- (void)rotateNodeToRight:(JXRangeTreeNode*)node
 {
-    PWIntervalTreeNode* parentNode = node.parentNode;
-    PWIntervalTreeNode* leftNode = node.leftNode;
+    JXRangeTreeNode* parentNode = node.parentNode;
+    JXRangeTreeNode* leftNode = node.leftNode;
     node.leftNode = leftNode.rightNode;
     
     if(_nilNode != leftNode.rightNode)
@@ -544,7 +544,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
 
 #pragma mark Updating and checking max highs
 
-- (void)updateMaxHighForNodeAndAncestors:(PWIntervalTreeNode*)node
+- (void)updateMaxHighForNodeAndAncestors:(JXRangeTreeNode*)node
 {
     while(node != _rootNode)
     {
@@ -557,7 +557,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
 #endif
 }
 
-- (BOOL)checkMaxHighOfNode:(PWIntervalTreeNode*)node currentHigh:(double)currentHigh match:(BOOL)match
+- (BOOL)checkMaxHighOfNode:(JXRangeTreeNode*)node currentHigh:(double)currentHigh match:(BOOL)match
 {
     if(node != _nilNode) {
         match = [self checkMaxHighOfNode:node.leftNode currentHigh:currentHigh match:match] ? YES : match;
@@ -570,7 +570,7 @@ typedef PWFoundation::inline_vector<PWIntervalTreeRecursionNode, 32> PWIntervalT
     return match;
 }
 
-- (void)checkMaxHighOfNode:(PWIntervalTreeNode*)node
+- (void)checkMaxHighOfNode:(JXRangeTreeNode*)node
 {
     if(node != _nilNode)
     {

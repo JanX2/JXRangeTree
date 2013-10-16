@@ -1,12 +1,12 @@
 //
-//  PWIntervalTreeNode.h
-//  PWFoundation
+//  JXRangeTreeNode.h
+//  JXFoundation
 //
 //
 
-@class PWIntervalTreeNode;
+@class JXRangeTreeNode;
 
-@interface PWIntervalTreeNode : NSObject
+@interface JXRangeTreeNode : NSObject
 
 #pragma mark Managing life cycle
 

@@ -1,18 +1,18 @@
 //
-//  PWInlineVector.hpp
-//  PWFoundation
+//  JXInlineVector.hpp
+//  JXFoundation
 //
 //
 
 // TODO: most likely the inline buffer is put on the stack twice due to the allocator instance which is passed to
 // the vector constructor. A fixed might be a dummy allocator type which returns the real inline allocator from rebind.
 
-#ifndef PWFoundation_inline_vector_hpp
-#define PWFoundation_inline_vector_hpp
+#ifndef JXFoundation_inline_vector_hpp
+#define JXFoundation_inline_vector_hpp
 
 #include <vector>
 
-namespace PWFoundation {
+namespace JXFoundation {
     
     // An allocator with inline storage for N elements. Being a stateful allocator, it may have problems with some
     // STL implementations, but any such problems should be detected by the tests immediately.
@@ -126,7 +126,7 @@ namespace PWFoundation {
     
     // TODO: comparision operators
 
-}   // namespace PWFoundation
+}   // namespace JXFoundation
 
 
 #endif

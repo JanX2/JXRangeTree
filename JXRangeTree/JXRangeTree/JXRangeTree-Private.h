@@ -1,33 +1,33 @@
 //
-//  PWIntervalTree-Private.h
-//  PWFoundation
+//  JXRangeTree-Private.h
+//  JXFoundation
 //
 //
 
-#import "PWIntervalTree.h"
+#import "JXRangeTree.h"
 
-@interface PWIntervalTree (Private)
+@interface JXRangeTree (Private)
 
 #pragma mark Inserting and deleting nodes
 
-- (void)insertNode:(PWIntervalTreeNode*)node;
-- (id)deleteNode:(PWIntervalTreeNode*)node;
-- (void)balanceNode:(PWIntervalTreeNode*)node;
+- (void)insertNode:(JXRangeTreeNode*)node;
+- (id)deleteNode:(JXRangeTreeNode*)node;
+- (void)balanceNode:(JXRangeTreeNode*)node;
 
 #pragma mark Accessing preceding and succeeding node 
 
-- (PWIntervalTreeNode*)nodePrecedingNode:(PWIntervalTreeNode*)node;
-- (PWIntervalTreeNode*)nodeSucceedingNode:(PWIntervalTreeNode*)node;
+- (JXRangeTreeNode*)nodePrecedingNode:(JXRangeTreeNode*)node;
+- (JXRangeTreeNode*)nodeSucceedingNode:(JXRangeTreeNode*)node;
 
 #pragma mark Rotating nodes
 
-- (void)rotateNodeToLeft:(PWIntervalTreeNode*)node;
-- (void)rotateNodeToRight:(PWIntervalTreeNode*)node;
+- (void)rotateNodeToLeft:(JXRangeTreeNode*)node;
+- (void)rotateNodeToRight:(JXRangeTreeNode*)node;
 
 #pragma mark Updating and checking max highs
 
-- (void)updateMaxHighForNodeAndAncestors:(PWIntervalTreeNode*)node;
-- (void)checkMaxHighOfNode:(PWIntervalTreeNode*)node;
+- (void)updateMaxHighForNodeAndAncestors:(JXRangeTreeNode*)node;
+- (void)checkMaxHighOfNode:(JXRangeTreeNode*)node;
 
 #pragma mark Accessing dot representation
 

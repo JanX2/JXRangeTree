@@ -1,12 +1,12 @@
 //
-//  PWIntervalTreeNode.m
-//  PWFoundation
+//  JXRangeTreeNode.m
+//  JXFoundation
 //
 //
 
-#import "PWIntervalTreeNode-Private.h"
+#import "JXRangeTreeNode-Private.h"
 
-@implementation PWIntervalTreeNode 
+@implementation JXRangeTreeNode 
 
 #pragma mark Managing life cycle
 

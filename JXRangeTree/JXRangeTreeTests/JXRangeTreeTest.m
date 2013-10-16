@@ -1,22 +1,22 @@
 //
-//  PWIntervalTreeTest.m
-//  PWFoundation
+//  JXRangeTreeTest.m
+//  JXFoundation
 //
 //
 
 #import <XCTest/XCTest.h>
 
-#import "PWIntervalTree.h"
-#import "PWIntervalTreeNode.h"
+#import "JXRangeTree.h"
+#import "JXRangeTreeNode.h"
 
-@interface PWIntervalTreeTest : XCTestCase
+@interface JXRangeTreeTest : XCTestCase
 @end
 
-@implementation PWIntervalTreeTest
+@implementation JXRangeTreeTest
 
 - (void)testIntervalTree
 {
-    PWIntervalTree* intervalTree = [[PWIntervalTree alloc] init];
+    JXRangeTree* intervalTree = [[JXRangeTree alloc] init];
     
     NSString* testObjectA = @"TestObject A";
     NSSet* setWithObjectA = [NSSet setWithObject:testObjectA];
@@ -31,7 +31,7 @@
 
 - (void)testIntervalTreeAdditionBeforeRemoval
 {
-    PWIntervalTree* intervalTree = [[PWIntervalTree alloc] init];
+    JXRangeTree* intervalTree = [[JXRangeTree alloc] init];
     
     NSString* testObjectA = @"TestObject A";
     [intervalTree addObject:testObjectA forIntervalWithLowValue:2 highValue:5];
@@ -67,7 +67,7 @@
 
 - (void)testIntervalTreeAdditionAfterRemoval
 {
-    PWIntervalTree* intervalTree = [[PWIntervalTree alloc] init];
+    JXRangeTree* intervalTree = [[JXRangeTree alloc] init];
     
     NSString* testObjectA = @"TestObject A";
     [intervalTree addObject:testObjectA forIntervalWithLowValue:2 highValue:5];
@@ -106,7 +106,7 @@
 
 - (void)testIntervalTreeSameInterval
 {
-    PWIntervalTree* intervalTree = [[PWIntervalTree alloc] init];
+    JXRangeTree* intervalTree = [[JXRangeTree alloc] init];
     
     NSString* testObjectA = @"TestObject A";
     NSString* testObjectB = @"TestObject B";
@@ -119,7 +119,7 @@
 
 - (void)testIntervalTreeWithIntervalStartingAtZero
 {
-    PWIntervalTree* intervalTree = [[PWIntervalTree alloc] init];
+    JXRangeTree* intervalTree = [[JXRangeTree alloc] init];
     
     NSString* testObjectA = @"TestObject A";
     NSString* testObjectB = @"TestObject B";
@@ -130,14 +130,14 @@
     XCTAssertEqualObjects([intervalTree objectsInIntervalWithLowValue:0 highValue:476], setWithObjectsAB);
     
     NSSet* nodes = [intervalTree nodesInIntervalWithLowValue:0 highValue:476];
-    for(PWIntervalTreeNode* node in nodes)
+    for(JXRangeTreeNode* node in nodes)
         [intervalTree deleteNode:node];
     XCTAssertEqualObjects([intervalTree objectsInIntervalWithLowValue:0 highValue:476], [NSSet set]);
 }
 
 - (void)testRecursiveEnumeration
 {
-    PWIntervalTree* intervalTree = [[PWIntervalTree alloc] init];
+    JXRangeTree* intervalTree = [[JXRangeTree alloc] init];
     
     NSString* testObjectA = @"A";
     NSString* testObjectB = @"B";
@@ -160,7 +160,7 @@
     NSMutableSet* enumeratedObjectsForD = [NSMutableSet set];
     
     // Outer enumeration should include B, C, and D.
-    [intervalTree enumerateNodesInIntervalWithLowValue:5 highValue:9 usingBlock:^(PWIntervalTreeNode* outerNode, BOOL* stop) {
+    [intervalTree enumerateNodesInIntervalWithLowValue:5 highValue:9 usingBlock:^(JXRangeTreeNode* outerNode, BOOL* stop) {
         double lowValue  = outerNode.lowValue - 1;
         double highValue = outerNode.highValue + 1;
         id outerObject = outerNode.object;
@@ -178,7 +178,7 @@
         }
         
         // Inner enumeration includes A, B, C for B; A, B, C, D for C; and C, D, E for D.
-        [intervalTree enumerateNodesInIntervalWithLowValue:lowValue highValue:highValue usingBlock:^(PWIntervalTreeNode* innerNode, BOOL* stop2) {
+        [intervalTree enumerateNodesInIntervalWithLowValue:lowValue highValue:highValue usingBlock:^(JXRangeTreeNode* innerNode, BOOL* stop2) {
             id innerObject = innerNode.object;
             [enumeratedObjects addObject:innerObject];
         }];
@@ -191,7 +191,7 @@
 
 - (void)testMutationDuringEnumeration
 {
-    PWIntervalTree* intervalTree = [[PWIntervalTree alloc] init];
+    JXRangeTree* intervalTree = [[JXRangeTree alloc] init];
     
     NSString* testObjectA = @"A";
     NSString* testObjectB = @"B";
@@ -200,7 +200,7 @@
     [intervalTree addObject:testObjectA forIntervalWithLowValue:3 highValue:4];
     [intervalTree addObject:testObjectB forIntervalWithLowValue:4 highValue:6];
 
-    XCTAssertThrows([intervalTree enumerateNodesInIntervalWithLowValue:5 highValue:5 usingBlock:^(PWIntervalTreeNode* outerNode, BOOL* stop) {
+    XCTAssertThrows([intervalTree enumerateNodesInIntervalWithLowValue:5 highValue:5 usingBlock:^(JXRangeTreeNode* outerNode, BOOL* stop) {
         [intervalTree addObject:testObjectC forIntervalWithLowValue:5 highValue:7];
     }]);
 }

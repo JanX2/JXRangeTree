@@ -1,18 +1,18 @@
 //
-//  PWIntervalTreeNode-Private.h
-//  PWFoundation
+//  JXRangeTreeNode-Private.h
+//  JXFoundation
 //
 //
 
-#import "PWIntervalTreeNode.h"
+#import "JXRangeTreeNode.h"
 
-@interface PWIntervalTreeNode ()
+@interface JXRangeTreeNode ()
 
 #pragma mark Accessing properties
 
-@property (nonatomic, readwrite, strong) PWIntervalTreeNode*    leftNode;
-@property (nonatomic, readwrite, strong) PWIntervalTreeNode*    rightNode;
-@property (nonatomic, readwrite, weak)   PWIntervalTreeNode*    parentNode;
+@property (nonatomic, readwrite, strong) JXRangeTreeNode*    leftNode;
+@property (nonatomic, readwrite, strong) JXRangeTreeNode*    rightNode;
+@property (nonatomic, readwrite, weak)   JXRangeTreeNode*    parentNode;
 
 @property (nonatomic, readwrite)        double                  key;
 @property (nonatomic, readwrite)        double                  high;

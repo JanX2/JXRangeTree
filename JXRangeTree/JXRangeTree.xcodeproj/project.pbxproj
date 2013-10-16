@@ -15,9 +15,9 @@
 		016D21FE1806B1F400A1C56B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 016D21FD1806B1F400A1C56B /* XCTest.framework */; };
 		016D21FF1806B1F400A1C56B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 016D21DE1806B1F400A1C56B /* Cocoa.framework */; };
 		016D22071806B1F400A1C56B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 016D22051806B1F400A1C56B /* InfoPlist.strings */; };
-		016D22181806B21D00A1C56B /* PWIntervalTree.mm in Sources */ = {isa = PBXBuildFile; fileRef = 016D22141806B21D00A1C56B /* PWIntervalTree.mm */; };
-		016D22191806B21D00A1C56B /* PWIntervalTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 016D22171806B21D00A1C56B /* PWIntervalTreeNode.m */; };
-		016D221C1806B26000A1C56B /* PWIntervalTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 016D221B1806B26000A1C56B /* PWIntervalTreeTest.m */; };
+		016D22181806B21D00A1C56B /* JXRangeTree.mm in Sources */ = {isa = PBXBuildFile; fileRef = 016D22141806B21D00A1C56B /* JXRangeTree.mm */; };
+		016D22191806B21D00A1C56B /* JXRangeTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 016D22171806B21D00A1C56B /* JXRangeTreeNode.m */; };
+		016D221C1806B26000A1C56B /* JXRangeTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 016D221B1806B26000A1C56B /* JXRangeTreeTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,34 +26,34 @@
 			containerPortal = 016D21D31806B1F400A1C56B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 016D21DA1806B1F400A1C56B;
-			remoteInfo = PWIntervalTree;
+			remoteInfo = JXRangeTree;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		016D21DB1806B1F400A1C56B /* PWIntervalTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PWIntervalTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		016D21DB1806B1F400A1C56B /* JXRangeTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JXRangeTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		016D21DE1806B1F400A1C56B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		016D21E11806B1F400A1C56B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		016D21E21806B1F400A1C56B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		016D21E31806B1F400A1C56B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		016D21E61806B1F400A1C56B /* PWIntervalTree-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PWIntervalTree-Info.plist"; sourceTree = "<group>"; };
+		016D21E61806B1F400A1C56B /* JXRangeTree-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JXRangeTree-Info.plist"; sourceTree = "<group>"; };
 		016D21E81806B1F400A1C56B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		016D21EA1806B1F400A1C56B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		016D21EC1806B1F400A1C56B /* PWIntervalTree-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PWIntervalTree-Prefix.pch"; sourceTree = "<group>"; };
+		016D21EC1806B1F400A1C56B /* JXRangeTree-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JXRangeTree-Prefix.pch"; sourceTree = "<group>"; };
 		016D21EE1806B1F400A1C56B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		016D21F41806B1F400A1C56B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		016D21FC1806B1F400A1C56B /* PWIntervalTreeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PWIntervalTreeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		016D21FC1806B1F400A1C56B /* JXRangeTreeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JXRangeTreeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		016D21FD1806B1F400A1C56B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		016D22041806B1F400A1C56B /* PWIntervalTreeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PWIntervalTreeTests-Info.plist"; sourceTree = "<group>"; };
+		016D22041806B1F400A1C56B /* JXRangeTreeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JXRangeTreeTests-Info.plist"; sourceTree = "<group>"; };
 		016D22061806B1F400A1C56B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		016D22121806B21D00A1C56B /* PWIntervalTree-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PWIntervalTree-Private.h"; sourceTree = "<group>"; };
-		016D22131806B21D00A1C56B /* PWIntervalTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWIntervalTree.h; sourceTree = "<group>"; };
-		016D22141806B21D00A1C56B /* PWIntervalTree.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PWIntervalTree.mm; sourceTree = "<group>"; };
-		016D22151806B21D00A1C56B /* PWIntervalTreeNode-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PWIntervalTreeNode-Private.h"; sourceTree = "<group>"; };
-		016D22161806B21D00A1C56B /* PWIntervalTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWIntervalTreeNode.h; sourceTree = "<group>"; };
-		016D22171806B21D00A1C56B /* PWIntervalTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWIntervalTreeNode.m; sourceTree = "<group>"; };
-		016D221A1806B24100A1C56B /* PWInlineVector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PWInlineVector.hpp; sourceTree = "<group>"; };
-		016D221B1806B26000A1C56B /* PWIntervalTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWIntervalTreeTest.m; sourceTree = "<group>"; };
+		016D22121806B21D00A1C56B /* JXRangeTree-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JXRangeTree-Private.h"; sourceTree = "<group>"; };
+		016D22131806B21D00A1C56B /* JXRangeTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXRangeTree.h; sourceTree = "<group>"; };
+		016D22141806B21D00A1C56B /* JXRangeTree.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JXRangeTree.mm; sourceTree = "<group>"; };
+		016D22151806B21D00A1C56B /* JXRangeTreeNode-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JXRangeTreeNode-Private.h"; sourceTree = "<group>"; };
+		016D22161806B21D00A1C56B /* JXRangeTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXRangeTreeNode.h; sourceTree = "<group>"; };
+		016D22171806B21D00A1C56B /* JXRangeTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXRangeTreeNode.m; sourceTree = "<group>"; };
+		016D221A1806B24100A1C56B /* JXInlineVector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JXInlineVector.hpp; sourceTree = "<group>"; };
+		016D221B1806B26000A1C56B /* JXRangeTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXRangeTreeTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +80,8 @@
 		016D21D21806B1F400A1C56B = {
 			isa = PBXGroup;
 			children = (
-				016D21E41806B1F400A1C56B /* PWIntervalTree */,
-				016D22021806B1F400A1C56B /* PWIntervalTreeTests */,
+				016D21E41806B1F400A1C56B /* JXRangeTree */,
+				016D22021806B1F400A1C56B /* JXRangeTreeTests */,
 				016D21DD1806B1F400A1C56B /* Frameworks */,
 				016D21DC1806B1F400A1C56B /* Products */,
 			);
@@ -90,8 +90,8 @@
 		016D21DC1806B1F400A1C56B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				016D21DB1806B1F400A1C56B /* PWIntervalTree.app */,
-				016D21FC1806B1F400A1C56B /* PWIntervalTreeTests.xctest */,
+				016D21DB1806B1F400A1C56B /* JXRangeTree.app */,
+				016D21FC1806B1F400A1C56B /* JXRangeTreeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,47 +116,47 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		016D21E41806B1F400A1C56B /* PWIntervalTree */ = {
+		016D21E41806B1F400A1C56B /* JXRangeTree */ = {
 			isa = PBXGroup;
 			children = (
-				016D22131806B21D00A1C56B /* PWIntervalTree.h */,
-				016D22121806B21D00A1C56B /* PWIntervalTree-Private.h */,
-				016D22141806B21D00A1C56B /* PWIntervalTree.mm */,
-				016D22161806B21D00A1C56B /* PWIntervalTreeNode.h */,
-				016D22151806B21D00A1C56B /* PWIntervalTreeNode-Private.h */,
-				016D22171806B21D00A1C56B /* PWIntervalTreeNode.m */,
-				016D221A1806B24100A1C56B /* PWInlineVector.hpp */,
+				016D22131806B21D00A1C56B /* JXRangeTree.h */,
+				016D22121806B21D00A1C56B /* JXRangeTree-Private.h */,
+				016D22141806B21D00A1C56B /* JXRangeTree.mm */,
+				016D22161806B21D00A1C56B /* JXRangeTreeNode.h */,
+				016D22151806B21D00A1C56B /* JXRangeTreeNode-Private.h */,
+				016D22171806B21D00A1C56B /* JXRangeTreeNode.m */,
+				016D221A1806B24100A1C56B /* JXInlineVector.hpp */,
 				016D21F31806B1F400A1C56B /* MainMenu.xib */,
 				016D21E51806B1F400A1C56B /* Supporting Files */,
 			);
-			path = PWIntervalTree;
+			path = JXRangeTree;
 			sourceTree = "<group>";
 		};
 		016D21E51806B1F400A1C56B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				016D21E61806B1F400A1C56B /* PWIntervalTree-Info.plist */,
+				016D21E61806B1F400A1C56B /* JXRangeTree-Info.plist */,
 				016D21E71806B1F400A1C56B /* InfoPlist.strings */,
 				016D21EA1806B1F400A1C56B /* main.m */,
-				016D21EC1806B1F400A1C56B /* PWIntervalTree-Prefix.pch */,
+				016D21EC1806B1F400A1C56B /* JXRangeTree-Prefix.pch */,
 				016D21ED1806B1F400A1C56B /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		016D22021806B1F400A1C56B /* PWIntervalTreeTests */ = {
+		016D22021806B1F400A1C56B /* JXRangeTreeTests */ = {
 			isa = PBXGroup;
 			children = (
-				016D221B1806B26000A1C56B /* PWIntervalTreeTest.m */,
+				016D221B1806B26000A1C56B /* JXRangeTreeTest.m */,
 				016D22031806B1F400A1C56B /* Supporting Files */,
 			);
-			path = PWIntervalTreeTests;
+			path = JXRangeTreeTests;
 			sourceTree = "<group>";
 		};
 		016D22031806B1F400A1C56B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				016D22041806B1F400A1C56B /* PWIntervalTreeTests-Info.plist */,
+				016D22041806B1F400A1C56B /* JXRangeTreeTests-Info.plist */,
 				016D22051806B1F400A1C56B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -165,9 +165,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		016D21DA1806B1F400A1C56B /* PWIntervalTree */ = {
+		016D21DA1806B1F400A1C56B /* JXRangeTree */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 016D220C1806B1F400A1C56B /* Build configuration list for PBXNativeTarget "PWIntervalTree" */;
+			buildConfigurationList = 016D220C1806B1F400A1C56B /* Build configuration list for PBXNativeTarget "JXRangeTree" */;
 			buildPhases = (
 				016D21D71806B1F400A1C56B /* Sources */,
 				016D21D81806B1F400A1C56B /* Frameworks */,
@@ -177,14 +177,14 @@
 			);
 			dependencies = (
 			);
-			name = PWIntervalTree;
-			productName = PWIntervalTree;
-			productReference = 016D21DB1806B1F400A1C56B /* PWIntervalTree.app */;
+			name = JXRangeTree;
+			productName = JXRangeTree;
+			productReference = 016D21DB1806B1F400A1C56B /* JXRangeTree.app */;
 			productType = "com.apple.product-type.application";
 		};
-		016D21FB1806B1F400A1C56B /* PWIntervalTreeTests */ = {
+		016D21FB1806B1F400A1C56B /* JXRangeTreeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 016D220F1806B1F400A1C56B /* Build configuration list for PBXNativeTarget "PWIntervalTreeTests" */;
+			buildConfigurationList = 016D220F1806B1F400A1C56B /* Build configuration list for PBXNativeTarget "JXRangeTreeTests" */;
 			buildPhases = (
 				016D21F81806B1F400A1C56B /* Sources */,
 				016D21F91806B1F400A1C56B /* Frameworks */,
@@ -195,9 +195,9 @@
 			dependencies = (
 				016D22011806B1F400A1C56B /* PBXTargetDependency */,
 			);
-			name = PWIntervalTreeTests;
-			productName = PWIntervalTreeTests;
-			productReference = 016D21FC1806B1F400A1C56B /* PWIntervalTreeTests.xctest */;
+			name = JXRangeTreeTests;
+			productName = JXRangeTreeTests;
+			productReference = 016D21FC1806B1F400A1C56B /* JXRangeTreeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -206,16 +206,16 @@
 		016D21D31806B1F400A1C56B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = PW;
+				CLASSPREFIX = JX;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = ProjectWizards;
 				TargetAttributes = {
 					016D21FB1806B1F400A1C56B = {
-						TestTargetID = 016D21DA1806B1F400A1C56B;
+						TestTargetID = 016D21DA1806B1F400A1C56B /* JXRangeTree */;
 					};
 				};
 			};
-			buildConfigurationList = 016D21D61806B1F400A1C56B /* Build configuration list for PBXProject "PWIntervalTree" */;
+			buildConfigurationList = 016D21D61806B1F400A1C56B /* Build configuration list for PBXProject "JXRangeTree" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -228,8 +228,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				016D21DA1806B1F400A1C56B /* PWIntervalTree */,
-				016D21FB1806B1F400A1C56B /* PWIntervalTreeTests */,
+				016D21DA1806B1F400A1C56B /* JXRangeTree */,
+				016D21FB1806B1F400A1C56B /* JXRangeTreeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -261,8 +261,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				016D21EB1806B1F400A1C56B /* main.m in Sources */,
-				016D22181806B21D00A1C56B /* PWIntervalTree.mm in Sources */,
-				016D22191806B21D00A1C56B /* PWIntervalTreeNode.m in Sources */,
+				016D22181806B21D00A1C56B /* JXRangeTree.mm in Sources */,
+				016D22191806B21D00A1C56B /* JXRangeTreeNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				016D221C1806B26000A1C56B /* PWIntervalTreeTest.m in Sources */,
+				016D221C1806B26000A1C56B /* JXRangeTreeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +279,7 @@
 /* Begin PBXTargetDependency section */
 		016D22011806B1F400A1C56B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 016D21DA1806B1F400A1C56B /* PWIntervalTree */;
+			target = 016D21DA1806B1F400A1C56B /* JXRangeTree */;
 			targetProxy = 016D22001806B1F400A1C56B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -394,8 +394,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PWIntervalTree/PWIntervalTree-Prefix.pch";
-				INFOPLIST_FILE = "PWIntervalTree/PWIntervalTree-Info.plist";
+				GCC_PREFIX_HEADER = "JXRangeTree/JXRangeTree-Prefix.pch";
+				INFOPLIST_FILE = "JXRangeTree/JXRangeTree-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -407,8 +407,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PWIntervalTree/PWIntervalTree-Prefix.pch";
-				INFOPLIST_FILE = "PWIntervalTree/PWIntervalTree-Info.plist";
+				GCC_PREFIX_HEADER = "JXRangeTree/JXRangeTree-Prefix.pch";
+				INFOPLIST_FILE = "JXRangeTree/JXRangeTree-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -417,19 +417,19 @@
 		016D22101806B1F400A1C56B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PWIntervalTree.app/Contents/MacOS/PWIntervalTree";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JXRangeTree.app/Contents/MacOS/JXRangeTree";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PWIntervalTree/PWIntervalTree-Prefix.pch";
+				GCC_PREFIX_HEADER = "JXRangeTree/JXRangeTree-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "PWIntervalTreeTests/PWIntervalTreeTests-Info.plist";
+				INFOPLIST_FILE = "JXRangeTreeTests/JXRangeTreeTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -439,15 +439,15 @@
 		016D22111806B1F400A1C56B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PWIntervalTree.app/Contents/MacOS/PWIntervalTree";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/JXRangeTree.app/Contents/MacOS/JXRangeTree";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PWIntervalTree/PWIntervalTree-Prefix.pch";
-				INFOPLIST_FILE = "PWIntervalTreeTests/PWIntervalTreeTests-Info.plist";
+				GCC_PREFIX_HEADER = "JXRangeTree/JXRangeTree-Prefix.pch";
+				INFOPLIST_FILE = "JXRangeTreeTests/JXRangeTreeTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -457,7 +457,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		016D21D61806B1F400A1C56B /* Build configuration list for PBXProject "PWIntervalTree" */ = {
+		016D21D61806B1F400A1C56B /* Build configuration list for PBXProject "JXRangeTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				016D220A1806B1F400A1C56B /* Debug */,
@@ -466,7 +466,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		016D220C1806B1F400A1C56B /* Build configuration list for PBXNativeTarget "PWIntervalTree" */ = {
+		016D220C1806B1F400A1C56B /* Build configuration list for PBXNativeTarget "JXRangeTree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				016D220D1806B1F400A1C56B /* Debug */,
@@ -474,7 +474,7 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		016D220F1806B1F400A1C56B /* Build configuration list for PBXNativeTarget "PWIntervalTreeTests" */ = {
+		016D220F1806B1F400A1C56B /* Build configuration list for PBXNativeTarget "JXRangeTreeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				016D22101806B1F400A1C56B /* Debug */,

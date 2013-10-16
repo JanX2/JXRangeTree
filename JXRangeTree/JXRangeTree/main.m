@@ -1,6 +1,6 @@
 //
 //  main.m
-//  PWIntervalTree
+//  JXRangeTree
 //
 //  Created by Frank Illenberger on 10.10.13.
 //  Copyright (c) 2013 ProjectWizards. All rights reserved.
