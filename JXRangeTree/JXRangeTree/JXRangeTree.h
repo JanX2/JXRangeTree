@@ -12,27 +12,27 @@
 #pragma mark Adding and removing objects
 
 - (JXRangeTreeNode*)addObject:(id)object
-         forIntervalWithLowValue:(double)lowValue
+         forRangeWithLowValue:(double)lowValue
                        highValue:(double)highValue;
 
-- (id)removeObjectForIntervalWithLowValue:(double)lowValue
+- (id)removeObjectForRangeWithLowValue:(double)lowValue
                                 highValue:(double)highValue;
 
 - (id)deleteNode:(JXRangeTreeNode*)node;
 
 #pragma mark Accessing objects and nodes
 
-- (void)enumerateNodesInIntervalWithLowValue:(double)lowValue
+- (void)enumerateNodesInRangeWithLowValue:(double)lowValue
                                    highValue:(double)highValue
                                   usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block;
 
-- (NSSet*)objectsInIntervalWithLowValue:(double)lowValue
+- (NSSet*)objectsInRangeWithLowValue:(double)lowValue
                               highValue:(double)highValue;
 
-- (NSSet*)nodesInIntervalWithLowValue:(double)lowValue
+- (NSSet*)nodesInRangeWithLowValue:(double)lowValue
                             highValue:(double)highValue;
 
-- (JXRangeTreeNode*)nodeForIntervalWithLowValue:(double)lowValue
+- (JXRangeTreeNode*)nodeForRangeWithLowValue:(double)lowValue
                                          highValue:(double)highValue;
 
 @end

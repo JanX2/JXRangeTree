@@ -30,7 +30,7 @@
 
 #pragma mark Overlapping interval tree nodes
 
-- (BOOL)overlapsWithIntervalWithLowValue:(double)lowValue
+- (BOOL)overlapsWithRangeWithLowValue:(double)lowValue
                                highValue:(double)highValue
 {
     BOOL overlaps;

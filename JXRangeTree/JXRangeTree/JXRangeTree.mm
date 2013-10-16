@@ -61,7 +61,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 
 #pragma mark Adding and removing objects
 
-- (JXRangeTreeNode*)addObject:(id)object forIntervalWithLowValue:(double)lowValue highValue:(double)highValue
+- (JXRangeTreeNode*)addObject:(id)object forRangeWithLowValue:(double)lowValue highValue:(double)highValue
 {
     JXRangeTreeNode* newNode = nil;
     
@@ -127,9 +127,9 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 #ifndef NDEBUG
         [self checkAssertions];
 #endif  
-        NSAssert(!_nilNode.isRed, @"nilNode not red in addObject:forIntervalWithLowValue:highValue:");
-        NSAssert(!_rootNode.isRed, @"rootNode not red in addObject:forIntervalWithLowValue:highValue:");
-        NSAssert((_nilNode.maxHigh == -DBL_MAX), @"nilNode.maxHigh != -DBL_MAX in addObject:forIntervalWithLowValue:highValue:");
+        NSAssert(!_nilNode.isRed, @"nilNode not red in addObject:forRangeWithLowValue:highValue:");
+        NSAssert(!_rootNode.isRed, @"rootNode not red in addObject:forRangeWithLowValue:highValue:");
+        NSAssert((_nilNode.maxHigh == -DBL_MAX), @"nilNode.maxHigh != -DBL_MAX in addObject:forRangeWithLowValue:highValue:");
     }
     else        
         [NSException raise:NSInternalInconsistencyException
@@ -138,13 +138,13 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     return(newNode);
 }
 
-- (id)removeObjectForIntervalWithLowValue:(double)aLowValue highValue:(double)aHighValue
+- (id)removeObjectForRangeWithLowValue:(double)aLowValue highValue:(double)aHighValue
 {
     id removedObject = nil;
     
     if(_enumerationCount == 0)
     {
-        JXRangeTreeNode* node = [self nodeForIntervalWithLowValue:aLowValue highValue:aHighValue];
+        JXRangeTreeNode* node = [self nodeForRangeWithLowValue:aLowValue highValue:aHighValue];
         if(node)
             removedObject = [self deleteNode:node];
     }
@@ -331,7 +331,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 
 #pragma mark Accessing objects and nodes
 
-- (void)enumerateNodesInIntervalWithLowValue:(double)aLowValue 
+- (void)enumerateNodesInRangeWithLowValue:(double)aLowValue 
                                    highValue:(double)aHighValue
                                   usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block
 {
@@ -355,7 +355,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     
     while(node != _nilNode)
     {
-        if([node overlapsWithIntervalWithLowValue:aLowValue highValue:aHighValue]) 
+        if([node overlapsWithRangeWithLowValue:aLowValue highValue:aHighValue]) 
         {
             block(node, &stop);
             if(stop)
@@ -385,33 +385,33 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     --_enumerationCount;
 }
 
-- (NSSet*)nodesInIntervalWithLowValue:(double)aLowValue highValue:(double)aHighValue
+- (NSSet*)nodesInRangeWithLowValue:(double)aLowValue highValue:(double)aHighValue
 {
-    NSMutableSet* nodesInInterval = [[NSMutableSet alloc] init];
+    NSMutableSet* nodesInRange = [[NSMutableSet alloc] init];
     
-    [self enumerateNodesInIntervalWithLowValue:aLowValue 
+    [self enumerateNodesInRangeWithLowValue:aLowValue 
                                      highValue:aHighValue
                                     usingBlock:^(JXRangeTreeNode* node, BOOL* stop) {
-                                        [nodesInInterval addObject:node];
+                                        [nodesInRange addObject:node];
                                     }];
     
-    return nodesInInterval;
+    return nodesInRange;
 }
 
-- (NSSet*)objectsInIntervalWithLowValue:(double)aLowValue highValue:(double)aHighValue
+- (NSSet*)objectsInRangeWithLowValue:(double)aLowValue highValue:(double)aHighValue
 {
-    NSMutableSet* objectsInInterval = [[NSMutableSet alloc] init];
+    NSMutableSet* objectsInRange = [[NSMutableSet alloc] init];
     
-    [self enumerateNodesInIntervalWithLowValue:aLowValue 
+    [self enumerateNodesInRangeWithLowValue:aLowValue 
                                      highValue:aHighValue
                                     usingBlock:^(JXRangeTreeNode* node, BOOL* stop) {
-                                        [objectsInInterval addObject:node.object];
+                                        [objectsInRange addObject:node.object];
                                     }];
     
-    return objectsInInterval;
+    return objectsInRange;
 }
 
-- (JXRangeTreeNode*)nodeForIntervalWithLowValue:(double)aLowValue highValue:(double)aHighValue
+- (JXRangeTreeNode*)nodeForRangeWithLowValue:(double)aLowValue highValue:(double)aHighValue
 {
     JXRangeTreeNode* node = nil;
     
