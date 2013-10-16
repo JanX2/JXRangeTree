@@ -80,7 +80,7 @@
     BOOL overlaps;
     
     if (_key <= lowValue)
-        overlaps = (lowValue <= _high);
+        overlaps = (lowValue < _high);
     else /* lowValue < _key */
         overlaps = (_key <= highValue);
     
