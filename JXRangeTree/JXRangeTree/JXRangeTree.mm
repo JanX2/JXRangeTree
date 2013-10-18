@@ -338,7 +338,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
                                  usingBlock:block];
 }
 
-- (void)enumerateNodesInRangeWithLowValue:(CFIndex)aLowValue 
+- (void)enumerateNodesInRangeWithLowValue:(CFIndex)aLowValue
                                    highValue:(CFIndex)aHighValue
                                   usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block
 {
