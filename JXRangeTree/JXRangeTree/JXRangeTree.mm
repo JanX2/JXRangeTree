@@ -45,7 +45,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 
 #pragma mark Adding and removing objects
 
-- (JXRangeTreeNode*)addObject:(id)object forRangeWithLowValue:(double)lowValue highValue:(double)highValue
+- (JXRangeTreeNode*)addObject:(id)object forRangeWithLowValue:(CFIndex)lowValue highValue:(CFIndex)highValue
 {
     JXRangeTreeNode* newNode = nil;
     
@@ -113,7 +113,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 #endif  
         NSAssert(!_nilNode.isRed, @"nilNode not red in addObject:forRangeWithLowValue:highValue:");
         NSAssert(!_rootNode.isRed, @"rootNode not red in addObject:forRangeWithLowValue:highValue:");
-        NSAssert((_nilNode.maxHigh == -DBL_MAX), @"nilNode.maxHigh != -DBL_MAX in addObject:forRangeWithLowValue:highValue:");
+        NSAssert((_nilNode.maxHigh == kCFNotFound), @"nilNode.maxHigh != kCFNotFound in addObject:forRangeWithLowValue:highValue:");
     }
     else        
         [NSException raise:NSInternalInconsistencyException
@@ -122,7 +122,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     return(newNode);
 }
 
-- (id)removeObjectForRangeWithLowValue:(double)aLowValue highValue:(double)aHighValue
+- (id)removeObjectForRangeWithLowValue:(CFIndex)aLowValue highValue:(CFIndex)aHighValue
 {
     id removedObject = nil;
     
@@ -165,7 +165,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
         newParentNode.rightNode = node;
     
     NSAssert(!_nilNode.isRed, @"nilNode not red in insertNode:");
-    NSAssert((_nilNode.maxHigh == -DBL_MAX), @"nilNode.maxHigh != -DBL_MAX in insertNode:");
+    NSAssert((_nilNode.maxHigh == kCFNotFound), @"nilNode.maxHigh != kCFNotFound in insertNode:");
 }
 
 - (void)balanceNode:(JXRangeTreeNode*)node
@@ -243,7 +243,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     [self checkAssertions];
 #endif
     NSAssert(!_nilNode.isRed, @"nilNode not black in balanceNode:");
-    NSAssert((_nilNode.maxHigh == -DBL_MAX),  @"nilNode.maxHigh != -DBL_MAX in balanceNode:");
+    NSAssert((_nilNode.maxHigh == kCFNotFound),  @"nilNode.maxHigh != kCFNotFound in balanceNode:");
 }
 
 - (id)deleteNode:(JXRangeTreeNode*)node
@@ -269,7 +269,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     {
         NSAssert(spliceOutNode != _nilNode, nil);
 
-        spliceOutNode.maxHigh = -DBL_MAX;
+        spliceOutNode.maxHigh = kCFNotFound;
         spliceOutNode.leftNode = node.leftNode;
         spliceOutNode.rightNode = node.rightNode;
         spliceOutNode.parentNode = node.parentNode;
@@ -295,7 +295,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
         [self checkAssertions];
 #endif
         NSAssert(!_nilNode.isRed,@"nilNode not black in deleteNode:");
-        NSAssert(_nilNode.maxHigh == -DBL_MAX, @"nilNode.maxHigh != -DBL_MAX in deleteNode:");
+        NSAssert(_nilNode.maxHigh == kCFNotFound, @"nilNode.maxHigh != kCFNotFound in deleteNode:");
     }
     else
     {
@@ -307,7 +307,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
         [self checkAssertions];
 #endif
         NSAssert(!_nilNode.isRed, @"nilNode not black in deleteNode:");
-        NSAssert(_nilNode.maxHigh == -DBL_MAX, @"nilNode.maxHigh != -DBL_MAX in deleteNode:");
+        NSAssert(_nilNode.maxHigh == kCFNotFound, @"nilNode.maxHigh != kCFNotFound in deleteNode:");
     }
     
     return object;
@@ -315,8 +315,8 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 
 #pragma mark Accessing objects and nodes
 
-- (void)enumerateNodesInRangeWithLowValue:(double)aLowValue 
-                                   highValue:(double)aHighValue
+- (void)enumerateNodesInRangeWithLowValue:(CFIndex)aLowValue 
+                                   highValue:(CFIndex)aHighValue
                                   usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block
 {
     NSParameterAssert(block);
@@ -371,7 +371,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     --_enumerationCount;
 }
 
-- (NSSet*)nodesInRangeWithLowValue:(double)aLowValue highValue:(double)aHighValue
+- (NSSet*)nodesInRangeWithLowValue:(CFIndex)aLowValue highValue:(CFIndex)aHighValue
 {
     NSMutableSet* nodesInRange = [[NSMutableSet alloc] init];
     
@@ -384,7 +384,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     return nodesInRange;
 }
 
-- (NSSet*)objectsInRangeWithLowValue:(double)aLowValue highValue:(double)aHighValue
+- (NSSet*)objectsInRangeWithLowValue:(CFIndex)aLowValue highValue:(CFIndex)aHighValue
 {
     NSMutableSet* objectsInRange = [[NSMutableSet alloc] init];
     
@@ -397,7 +397,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     return objectsInRange;
 }
 
-- (JXRangeTreeNode*)nodeForRangeWithLowValue:(double)aLowValue highValue:(double)aHighValue
+- (JXRangeTreeNode*)nodeForRangeWithLowValue:(CFIndex)aLowValue highValue:(CFIndex)aHighValue
 {
     JXRangeTreeNode* node = nil;
     
@@ -490,14 +490,14 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     rightNode.leftNode = node;
     node.parentNode = rightNode;
     
-    node.maxHigh = fmax(node.leftNode.maxHigh, fmax(node.rightNode.maxHigh, node.high));
-    rightNode.maxHigh = fmax(node.maxHigh, fmax(rightNode.rightNode.maxHigh, rightNode.high));
+    node.maxHigh = MAX(node.leftNode.maxHigh, MAX(node.rightNode.maxHigh, node.high));
+    rightNode.maxHigh = MAX(node.maxHigh, MAX(rightNode.rightNode.maxHigh, rightNode.high));
     
 #ifndef NDEBUG
     [self checkAssertions];
 #endif
     NSAssert(!_nilNode.isRed, @"nilNode not red in rotateNodeToLeft:");
-    NSAssert(_nilNode.maxHigh == -DBL_MAX, @"nilNode.maxHigh != -DBL_MAX in rotateNodeToLeft:");
+    NSAssert(_nilNode.maxHigh == kCFNotFound, @"nilNode.maxHigh != kCFNotFound in rotateNodeToLeft:");
 }
 
 - (void)rotateNodeToRight:(JXRangeTreeNode*)node
@@ -518,14 +518,14 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     leftNode.rightNode = node;
     node.parentNode = leftNode;
     
-    node.maxHigh = fmax(node.leftNode.maxHigh, fmax(node.rightNode.maxHigh, node.high));
-    leftNode.maxHigh = fmax(leftNode.leftNode.maxHigh, fmax(node.maxHigh, leftNode.high));
+    node.maxHigh = MAX(node.leftNode.maxHigh, MAX(node.rightNode.maxHigh, node.high));
+    leftNode.maxHigh = MAX(leftNode.leftNode.maxHigh, MAX(node.maxHigh, leftNode.high));
     
 #ifndef NDEBUG
     [self checkAssertions];
 #endif
     NSAssert(!_nilNode.isRed, @"nilNode not red in rotateNodeToRight:");
-    NSAssert(_nilNode.maxHigh == -DBL_MAX, @"nilNode.maxHigh != -DBL_MAX in rotateNodeToRight:");
+    NSAssert(_nilNode.maxHigh == kCFNotFound, @"nilNode.maxHigh != kCFNotFound in rotateNodeToRight:");
 }
 
 #pragma mark Updating and checking max highs
@@ -534,7 +534,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 {
     while(node != _rootNode)
     {
-        node.maxHigh = fmax(node.high, fmax(node.leftNode.maxHigh, node.rightNode.maxHigh));
+        node.maxHigh = MAX(node.high, MAX(node.leftNode.maxHigh, node.rightNode.maxHigh));
         node = node.parentNode;
     }
     
@@ -543,7 +543,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 #endif
 }
 
-- (BOOL)checkMaxHighOfNode:(JXRangeTreeNode*)node currentHigh:(double)currentHigh match:(BOOL)match
+- (BOOL)checkMaxHighOfNode:(JXRangeTreeNode*)node currentHigh:(CFIndex)currentHigh match:(BOOL)match
 {
     if(node != _nilNode) {
         match = [self checkMaxHighOfNode:node.leftNode currentHigh:currentHigh match:match] ? YES : match;
@@ -568,13 +568,13 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 
 - (void)checkAssertions
 {
-    NSAssert(_nilNode.key == -DBL_MAX, @"nilNode.key != -DBL_MAX");
-    NSAssert(_nilNode.high == -DBL_MAX, @"nilNode.high != -DBL_MAX");
-    NSAssert(_nilNode.maxHigh == -DBL_MAX, @"nilNode.maxHigh != -DBL_MAX");
+    NSAssert(_nilNode.key == kCFNotFound, @"nilNode.key != kCFNotFound");
+    NSAssert(_nilNode.high == kCFNotFound, @"nilNode.high != kCFNotFound");
+    NSAssert(_nilNode.maxHigh == kCFNotFound, @"nilNode.maxHigh != kCFNotFound");
     
-    NSAssert(_rootNode.key == DBL_MAX, @"rootNode.key != DBL_MAX");
-    NSAssert(_rootNode.high == DBL_MAX, @"rootNode.high != DBL_MAX");
-    NSAssert(_rootNode.maxHigh == DBL_MAX, @"rootNode.maxHigh != DBL_MAX");
+    NSAssert(_rootNode.key == LONG_MAX, @"rootNode.key != LONG_MAX");
+    NSAssert(_rootNode.high == LONG_MAX, @"rootNode.high != LONG_MAX");
+    NSAssert(_rootNode.maxHigh == LONG_MAX, @"rootNode.maxHigh != LONG_MAX");
     
     NSAssert(_nilNode.object == nil, @"nilNode.object != nil");
     NSAssert(_rootNode.object == nil, @"rootNode.object != nil");

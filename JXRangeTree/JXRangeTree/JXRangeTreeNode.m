@@ -11,8 +11,8 @@
 #pragma mark Managing life cycle
 
 - (id)initWithObject:(id)object
-            lowValue:(double)lowValue
-           highValue:(double)highValue
+            lowValue:(CFIndex)lowValue
+           highValue:(CFIndex)highValue
 {
     if(self = [super init])
     {
@@ -34,9 +34,9 @@
         _rightNode = self;
         _parentNode = self;
         _isRed = NO;
-        _key = -DBL_MAX;
-        _high = -DBL_MAX;
-        _maxHigh = -DBL_MAX;
+        _key = kCFNotFound;
+        _high = kCFNotFound;
+        _maxHigh = kCFNotFound;
         _object = nil;
     }
     
@@ -51,9 +51,9 @@
         _rightNode = nilNode;
         _parentNode = nilNode;
         _isRed = NO;
-        _key = DBL_MAX;
-        _high = DBL_MAX;
-        _maxHigh = DBL_MAX;
+        _key = LONG_MAX;
+        _high = LONG_MAX;
+        _maxHigh = LONG_MAX;
         _object = nil;
     }
     
@@ -62,20 +62,20 @@
 
 #pragma mark Accessing properties
 
-- (double)lowValue
+- (CFIndex)lowValue
 {
     return _key;
 }
 
-- (double)highValue
+- (CFIndex)highValue
 {
     return _high;
 }
 
 #pragma mark Overlapping interval tree nodes
 
-- (BOOL)overlapsWithRangeWithLowValue:(double)lowValue
-                               highValue:(double)highValue
+- (BOOL)overlapsWithRangeWithLowValue:(CFIndex)lowValue
+                               highValue:(CFIndex)highValue
 {
     BOOL overlaps;
     

@@ -11,13 +11,13 @@
 #pragma mark Managing life cycle
 
 - (id)initWithObject:(id)object
-            lowValue:(double)lowValue
-           highValue:(double)highValue;
+            lowValue:(CFIndex)lowValue
+           highValue:(CFIndex)highValue;
 
 #pragma mark Accessing properties
 
 @property (nonatomic, readwrite, strong)   id      object;
-@property (nonatomic, readonly)            double  lowValue;
-@property (nonatomic, readonly)            double  highValue;
+@property (nonatomic, readonly)            CFIndex lowValue;
+@property (nonatomic, readonly)            CFIndex highValue;
 
 @end

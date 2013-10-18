@@ -162,8 +162,8 @@
     
     // Outer enumeration should include B, C, and D.
     [rangeTree enumerateNodesInRangeWithLowValue:5 highValue:9 usingBlock:^(JXRangeTreeNode* outerNode, BOOL* stop) {
-        double lowValue  = outerNode.lowValue - 1;
-        double highValue = outerNode.highValue + 1;
+        CFIndex lowValue  = outerNode.lowValue - 1;
+        CFIndex highValue = outerNode.highValue + 1;
         id outerObject = outerNode.object;
         
         NSMutableSet* enumeratedObjects;
