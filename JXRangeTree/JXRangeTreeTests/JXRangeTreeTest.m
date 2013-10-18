@@ -188,7 +188,8 @@ NS_INLINE NSRange JXMakeRangeFromTo(NSUInteger start, NSUInteger end) {
         }
         
         // Inner enumeration includes A, B, C for B; B, C for C; and D, E for D.
-        [rangeTree enumerateNodesInRangeWithLowValue:lowValue highValue:highValue usingBlock:^(JXRangeTreeNode* innerNode, BOOL* stop2) {
+        [rangeTree enumerateNodesInRange:JXMakeRangeFromTo(lowValue, highValue)
+                              usingBlock:^(JXRangeTreeNode* innerNode, BOOL* stop2) {
             id innerObject = innerNode.object;
             [enumeratedObjects addObject:innerObject];
         }];

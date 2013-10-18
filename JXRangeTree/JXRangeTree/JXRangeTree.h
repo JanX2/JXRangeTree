@@ -14,14 +14,7 @@
 - (JXRangeTreeNode*)addObject:(id)object
                      forRange:(NSRange)range;
 
-- (JXRangeTreeNode*)addObject:(id)object
-         forRangeWithLowValue:(CFIndex)lowValue
-                       highValue:(CFIndex)highValue;
-
 - (id)removeObjectForRange:(NSRange)range;
-
-- (id)removeObjectForRangeWithLowValue:(CFIndex)lowValue
-                                highValue:(CFIndex)highValue;
 
 - (id)deleteNode:(JXRangeTreeNode*)node;
 
@@ -30,23 +23,10 @@
 - (void)enumerateNodesInRange:(NSRange)range
                    usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block;
 
-- (void)enumerateNodesInRangeWithLowValue:(CFIndex)lowValue
-                                   highValue:(CFIndex)highValue
-                                  usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block;
-
 - (NSSet*)objectsInRange:(NSRange)range;
-
-- (NSSet*)objectsInRangeWithLowValue:(CFIndex)lowValue
-                              highValue:(CFIndex)highValue;
 
 - (NSSet*)nodesInRange:(NSRange)range;
 
-- (NSSet*)nodesInRangeWithLowValue:(CFIndex)lowValue
-                            highValue:(CFIndex)highValue;
-
 - (JXRangeTreeNode*)nodeForRange:(NSRange)range;
-
-- (JXRangeTreeNode*)nodeForRangeWithLowValue:(CFIndex)lowValue
-                                         highValue:(CFIndex)highValue;
 
 @end
