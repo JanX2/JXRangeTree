@@ -46,7 +46,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 #pragma mark Adding and removing objects
 
 - (JXRangeTreeNode*)addObject:(id)object
-                     forRange:(CFRange)range;
+                     forRange:(NSRange)range;
 {
     return [self addObject:object
       forRangeWithLowValue:range.location
@@ -130,7 +130,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     return(newNode);
 }
 
-- (id)removeObjectForRange:(CFRange)range;
+- (id)removeObjectForRange:(NSRange)range;
 {
     return [self removeObjectForRangeWithLowValue:range.location
                                         highValue:range.location + range.length];
@@ -330,7 +330,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 
 #pragma mark Accessing objects and nodes
 
-- (void)enumerateNodesInRange:(CFRange)range
+- (void)enumerateNodesInRange:(NSRange)range
                    usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block;
 {
     [self enumerateNodesInRangeWithLowValue:range.location
@@ -394,7 +394,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     --_enumerationCount;
 }
 
-- (NSSet*)nodesInRange:(CFRange)range;
+- (NSSet*)nodesInRange:(NSRange)range;
 {
     return [self nodesInRangeWithLowValue:range.location
                                 highValue:range.location + range.length];
@@ -413,7 +413,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     return nodesInRange;
 }
 
-- (NSSet*)objectsInRange:(CFRange)range;
+- (NSSet*)objectsInRange:(NSRange)range;
 {
     return [self objectsInRangeWithLowValue:range.location
                                   highValue:range.location + range.length];
@@ -432,7 +432,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     return objectsInRange;
 }
 
-- (JXRangeTreeNode*)nodeForRange:(CFRange)range;
+- (JXRangeTreeNode*)nodeForRange:(NSRange)range;
 {
     return [self nodeForRangeWithLowValue:range.location
                                 highValue:range.location + range.length];
