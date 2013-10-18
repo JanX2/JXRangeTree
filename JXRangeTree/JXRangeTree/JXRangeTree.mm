@@ -1,6 +1,6 @@
 //
 //  JXRangeTree.m
-//  JXFoundation
+//  JXRangeTree
 //
 //
 

@@ -1,6 +1,6 @@
 //
 //  JXRangeTreeNode.h
-//  JXFoundation
+//  JXRangeTree
 //
 //
 

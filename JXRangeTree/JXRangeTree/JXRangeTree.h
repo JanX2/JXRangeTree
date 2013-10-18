@@ -1,6 +1,6 @@
 //
 //  JXRangeTree.h
-//  JXFoundation
+//  JXRangeTree
 //
 // Simple Obj-C Implementation of an interval tree.
 // Inspired by Emin Martinian's C-implementation ( http://web.mit.edu/~emin/www.old/source_code/cpp_trees )

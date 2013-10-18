@@ -1,6 +1,6 @@
 //
 //  JXRangeTree-Private.h
-//  JXFoundation
+//  JXRangeTree
 //
 //
 
