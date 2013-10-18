@@ -119,7 +119,7 @@ namespace JXFoundation {
         }
 
     private:
-        // swap is made unaccessible: it is unclear whether it can be supported at all, and it does not make much
+        // swap is made inaccessible: it is unclear whether it can be supported at all, and it does not make much
         // sense because its constant complexity guarantee would be broken for sure.
         void swap (inline_vector<T, N>&);
     };
