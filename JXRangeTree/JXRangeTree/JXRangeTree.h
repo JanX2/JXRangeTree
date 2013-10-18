@@ -12,8 +12,13 @@
 #pragma mark Adding and removing objects
 
 - (JXRangeTreeNode*)addObject:(id)object
+                     forRange:(CFRange)range;
+
+- (JXRangeTreeNode*)addObject:(id)object
          forRangeWithLowValue:(CFIndex)lowValue
                        highValue:(CFIndex)highValue;
+
+- (id)removeObjectForRange:(CFRange)range;
 
 - (id)removeObjectForRangeWithLowValue:(CFIndex)lowValue
                                 highValue:(CFIndex)highValue;
@@ -22,15 +27,24 @@
 
 #pragma mark Accessing objects and nodes
 
+- (void)enumerateNodesInRange:(CFRange)range
+                   usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block;
+
 - (void)enumerateNodesInRangeWithLowValue:(CFIndex)lowValue
                                    highValue:(CFIndex)highValue
                                   usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block;
 
+- (NSSet*)objectsInRange:(CFRange)range;
+
 - (NSSet*)objectsInRangeWithLowValue:(CFIndex)lowValue
                               highValue:(CFIndex)highValue;
 
+- (NSSet*)nodesInRange:(CFRange)range;
+
 - (NSSet*)nodesInRangeWithLowValue:(CFIndex)lowValue
                             highValue:(CFIndex)highValue;
+
+- (JXRangeTreeNode*)nodeForRange:(CFRange)range;
 
 - (JXRangeTreeNode*)nodeForRangeWithLowValue:(CFIndex)lowValue
                                          highValue:(CFIndex)highValue;

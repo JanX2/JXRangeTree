@@ -21,13 +21,13 @@
     NSString* testObjectA = @"TestObject A";
     NSSet* setWithObjectA = [NSSet setWithObject:testObjectA];
     
-    [rangeTree addObject:testObjectA forRangeWithLowValue:2 highValue:4];
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:0 highValue:1], [NSSet set]);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:1 highValue:2], [NSSet set]);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:2 highValue:3], setWithObjectA);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:2 highValue:4], setWithObjectA);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:4 highValue:5], [NSSet set]);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:5 highValue:9], [NSSet set]);
+    [rangeTree addObject:testObjectA forRange:CFRangeMake(2, 4 - 2)];
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(0, 1 - 0)], [NSSet set]);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(1, 2 - 1)], [NSSet set]);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(2, 3 - 2)], setWithObjectA);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(2, 4 - 2)], setWithObjectA);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(4, 5 - 4)], [NSSet set]);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(5, 9 - 5)], [NSSet set]);
 }
 
 - (void)testRangeTreeAdditionBeforeRemoval
@@ -35,9 +35,9 @@
     JXRangeTree* rangeTree = [[JXRangeTree alloc] init];
     
     NSString* testObjectA = @"TestObject A";
-    [rangeTree addObject:testObjectA forRangeWithLowValue:2 highValue:5];
+    [rangeTree addObject:testObjectA forRange:CFRangeMake(2, 5 - 2)];
     NSString* testObjectB = @"TestObject B";
-    [rangeTree addObject:testObjectB forRangeWithLowValue:3 highValue:7];
+    [rangeTree addObject:testObjectB forRange:CFRangeMake(3, 7 - 3)];
     NSString* testObjectC = @"TestObject C";
     
     NSSet* setWithObjectA = [NSSet setWithObject:testObjectA];
@@ -47,23 +47,23 @@
     NSSet* setWithObjectsBC = [setWithObjectB setByAddingObjectsFromSet:setWithObjectC];
     NSSet* setWithObjectsABC = [setWithObjectsAB setByAddingObjectsFromSet:setWithObjectC];
     
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:2 highValue:3], setWithObjectA);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:3 highValue:5], setWithObjectsAB);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:5 highValue:7], setWithObjectB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(2, 3 - 2)], setWithObjectA);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(3, 5 - 3)], setWithObjectsAB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(5, 7 - 5)], setWithObjectB);
     
-    [rangeTree addObject:testObjectC forRangeWithLowValue:4 highValue:6];
+    [rangeTree addObject:testObjectC forRange:CFRangeMake(4, 6 - 4)];
 
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:2 highValue:3], setWithObjectA);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:3 highValue:4], setWithObjectsAB);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:4 highValue:5], setWithObjectsABC);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:5 highValue:6], setWithObjectsBC);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:6 highValue:7], setWithObjectB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(2, 3 - 2)], setWithObjectA);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(3, 4 - 3)], setWithObjectsAB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(4, 5 - 4)], setWithObjectsABC);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(5, 6 - 5)], setWithObjectsBC);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(6, 7 - 6)], setWithObjectB);
     
-    [rangeTree removeObjectForRangeWithLowValue:4 highValue:6];
+    [rangeTree removeObjectForRange:CFRangeMake(4, 6 - 4)];
     
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:2 highValue:3], setWithObjectA);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:3 highValue:5], setWithObjectsAB);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:5 highValue:7], setWithObjectB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(2, 3 - 2)], setWithObjectA);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(3, 5 - 3)], setWithObjectsAB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(5, 7 - 5)], setWithObjectB);
 }
 
 - (void)testRangeTreeAdditionAfterRemoval
@@ -71,11 +71,11 @@
     JXRangeTree* rangeTree = [[JXRangeTree alloc] init];
     
     NSString* testObjectA = @"TestObject A";
-    [rangeTree addObject:testObjectA forRangeWithLowValue:2 highValue:5];
+    [rangeTree addObject:testObjectA forRange:CFRangeMake(2, 5 - 2)];
     NSString* testObjectB = @"TestObject B";
-    [rangeTree addObject:testObjectB forRangeWithLowValue:3 highValue:7];
+    [rangeTree addObject:testObjectB forRange:CFRangeMake(3, 7 - 3)];
     NSString* testObjectC = @"TestObject C";
-    [rangeTree addObject:testObjectC forRangeWithLowValue:4 highValue:6];
+    [rangeTree addObject:testObjectC forRange:CFRangeMake(4, 6 - 4)];
     
     NSSet* setWithObjectA = [NSSet setWithObject:testObjectA];
     NSSet* setWithObjectB = [NSSet setWithObject:testObjectB];
@@ -84,25 +84,25 @@
     NSSet* setWithObjectsBC = [setWithObjectB setByAddingObjectsFromSet:setWithObjectC];
     NSSet* setWithObjectsABC = [setWithObjectsAB setByAddingObjectsFromSet:setWithObjectC];
     
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:2 highValue:3], setWithObjectA);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:3 highValue:4], setWithObjectsAB);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:4 highValue:5], setWithObjectsABC);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:5 highValue:6], setWithObjectsBC);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:6 highValue:7], setWithObjectB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(2, 3 - 2)], setWithObjectA);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(3, 4 - 3)], setWithObjectsAB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(4, 5 - 4)], setWithObjectsABC);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(5, 6 - 5)], setWithObjectsBC);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(6, 7 - 6)], setWithObjectB);
 
-    [rangeTree removeObjectForRangeWithLowValue:4 highValue:6];
+    [rangeTree removeObjectForRange:CFRangeMake(4, 6 - 4)];
 
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:2 highValue:3], setWithObjectA);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:3 highValue:5], setWithObjectsAB);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:5 highValue:7], setWithObjectB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(2, 3 - 2)], setWithObjectA);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(3, 5 - 3)], setWithObjectsAB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(5, 7 - 5)], setWithObjectB);
     
-    [rangeTree addObject:testObjectC forRangeWithLowValue:4 highValue:6];
+    [rangeTree addObject:testObjectC forRange:CFRangeMake(4, 6 - 4)];
 
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:2 highValue:3], setWithObjectA);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:3 highValue:4], setWithObjectsAB);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:4 highValue:5], setWithObjectsABC);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:5 highValue:6], setWithObjectsBC);
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:6 highValue:7], setWithObjectB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(2, 3 - 2)], setWithObjectA);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(3, 4 - 3)], setWithObjectsAB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(4, 5 - 4)], setWithObjectsABC);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(5, 6 - 5)], setWithObjectsBC);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(6, 7 - 6)], setWithObjectB);
 }
 
 - (void)testRangeTreeSameRange
@@ -113,9 +113,9 @@
     NSString* testObjectB = @"TestObject B";
     NSSet* setWithObjectsAB = [NSSet setWithObjects:testObjectA, testObjectB, nil];
 
-    [rangeTree addObject:testObjectA forRangeWithLowValue:2 highValue:5];
-    [rangeTree addObject:testObjectB forRangeWithLowValue:2 highValue:5];
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:2 highValue:5], setWithObjectsAB);
+    [rangeTree addObject:testObjectA forRange:CFRangeMake(2, 5 - 2)];
+    [rangeTree addObject:testObjectB forRange:CFRangeMake(2, 5 - 2)];
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(2, 5 - 2)], setWithObjectsAB);
 }
 
 - (void)testRangeTreeWithRangeStartingAtZero
@@ -126,14 +126,14 @@
     NSString* testObjectB = @"TestObject B";
     NSSet* setWithObjectsAB = [NSSet setWithObjects:testObjectA, testObjectB, nil];
 
-    [rangeTree addObject:testObjectA forRangeWithLowValue:4 highValue:18];
-    [rangeTree addObject:testObjectB forRangeWithLowValue:26 highValue:40];
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:0 highValue:476], setWithObjectsAB);
+    [rangeTree addObject:testObjectA forRange:CFRangeMake(4, 18 - 4)];
+    [rangeTree addObject:testObjectB forRange:CFRangeMake(26, 40 - 26)];
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(0, 476 - 0)], setWithObjectsAB);
     
-    NSSet* nodes = [rangeTree nodesInRangeWithLowValue:0 highValue:476];
+    NSSet* nodes = [rangeTree nodesInRange:CFRangeMake(0, 476 - 0)];
     for(JXRangeTreeNode* node in nodes)
         [rangeTree deleteNode:node];
-    XCTAssertEqualObjects([rangeTree objectsInRangeWithLowValue:0 highValue:476], [NSSet set]);
+    XCTAssertEqualObjects([rangeTree objectsInRange:CFRangeMake(0, 476 - 0)], [NSSet set]);
 }
 
 - (void)testRecursiveEnumeration
@@ -146,11 +146,11 @@
     NSString* testObjectD = @"D";
     NSString* testObjectE = @"E";
     
-    [rangeTree addObject:testObjectA forRangeWithLowValue: 3 highValue: 4];
-    [rangeTree addObject:testObjectB forRangeWithLowValue: 4 highValue: 6];
-    [rangeTree addObject:testObjectC forRangeWithLowValue: 5 highValue: 7];
-    [rangeTree addObject:testObjectD forRangeWithLowValue: 8 highValue:10];
-    [rangeTree addObject:testObjectE forRangeWithLowValue:10 highValue:11];
+    [rangeTree addObject:testObjectA forRange:CFRangeMake(3, 4 - 3)];
+    [rangeTree addObject:testObjectB forRange:CFRangeMake(4, 6 - 4)];
+    [rangeTree addObject:testObjectC forRange:CFRangeMake(5, 7 - 5)];
+    [rangeTree addObject:testObjectD forRange:CFRangeMake(8, 10 - 8)];
+    [rangeTree addObject:testObjectE forRange:CFRangeMake(10, 11 - 10)];
     
     NSSet* setWithObjectsABC = [NSSet setWithObjects:testObjectA, testObjectB, testObjectC, nil];
     NSSet* setWithObjectsBC = [NSSet setWithObjects:testObjectB, testObjectC, nil];
@@ -161,7 +161,7 @@
     NSMutableSet* enumeratedObjectsForD = [NSMutableSet set];
     
     // Outer enumeration should include B, C, and D.
-    [rangeTree enumerateNodesInRangeWithLowValue:5 highValue:9 usingBlock:^(JXRangeTreeNode* outerNode, BOOL* stop) {
+    [rangeTree enumerateNodesInRange:CFRangeMake(5, 9 - 5) usingBlock:^(JXRangeTreeNode* outerNode, BOOL* stop) {
         CFIndex lowValue  = outerNode.lowValue - 1;
         CFIndex highValue = outerNode.highValue + 1;
         id outerObject = outerNode.object;
@@ -198,11 +198,11 @@
     NSString* testObjectB = @"B";
     NSString* testObjectC = @"C";
     
-    [rangeTree addObject:testObjectA forRangeWithLowValue:3 highValue:4];
-    [rangeTree addObject:testObjectB forRangeWithLowValue:4 highValue:6];
+    [rangeTree addObject:testObjectA forRange:CFRangeMake(3, 4 - 3)];
+    [rangeTree addObject:testObjectB forRange:CFRangeMake(4, 6 - 4)];
 
-    XCTAssertThrows([rangeTree enumerateNodesInRangeWithLowValue:5 highValue:5 usingBlock:^(JXRangeTreeNode* outerNode, BOOL* stop) {
-        [rangeTree addObject:testObjectC forRangeWithLowValue:5 highValue:7];
+    XCTAssertThrows([rangeTree enumerateNodesInRange:CFRangeMake(5, 5 - 5) usingBlock:^(JXRangeTreeNode* outerNode, BOOL* stop) {
+        [rangeTree addObject:testObjectC forRange:CFRangeMake(5, 7 - 5)];
     }]);
 }
 

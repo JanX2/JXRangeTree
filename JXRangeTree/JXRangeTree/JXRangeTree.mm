@@ -45,6 +45,14 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 
 #pragma mark Adding and removing objects
 
+- (JXRangeTreeNode*)addObject:(id)object
+                     forRange:(CFRange)range;
+{
+    return [self addObject:object
+      forRangeWithLowValue:range.location
+                 highValue:range.location + range.length];
+}
+
 - (JXRangeTreeNode*)addObject:(id)object forRangeWithLowValue:(CFIndex)lowValue highValue:(CFIndex)highValue
 {
     JXRangeTreeNode* newNode = nil;
@@ -121,6 +129,13 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     
     return(newNode);
 }
+
+- (id)removeObjectForRange:(CFRange)range;
+{
+    return [self removeObjectForRangeWithLowValue:range.location
+                                        highValue:range.location + range.length];
+}
+
 
 - (id)removeObjectForRangeWithLowValue:(CFIndex)aLowValue highValue:(CFIndex)aHighValue
 {
@@ -315,6 +330,14 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 
 #pragma mark Accessing objects and nodes
 
+- (void)enumerateNodesInRange:(CFRange)range
+                   usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block;
+{
+    [self enumerateNodesInRangeWithLowValue:range.location
+                                  highValue:range.location + range.length
+                                 usingBlock:block];
+}
+
 - (void)enumerateNodesInRangeWithLowValue:(CFIndex)aLowValue 
                                    highValue:(CFIndex)aHighValue
                                   usingBlock:(void (^)(JXRangeTreeNode* node, BOOL* stop))block
@@ -371,6 +394,12 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     --_enumerationCount;
 }
 
+- (NSSet*)nodesInRange:(CFRange)range;
+{
+    return [self nodesInRangeWithLowValue:range.location
+                                highValue:range.location + range.length];
+}
+
 - (NSSet*)nodesInRangeWithLowValue:(CFIndex)aLowValue highValue:(CFIndex)aHighValue
 {
     NSMutableSet* nodesInRange = [[NSMutableSet alloc] init];
@@ -384,6 +413,12 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
     return nodesInRange;
 }
 
+- (NSSet*)objectsInRange:(CFRange)range;
+{
+    return [self objectsInRangeWithLowValue:range.location
+                                  highValue:range.location + range.length];
+}
+
 - (NSSet*)objectsInRangeWithLowValue:(CFIndex)aLowValue highValue:(CFIndex)aHighValue
 {
     NSMutableSet* objectsInRange = [[NSMutableSet alloc] init];
@@ -395,6 +430,12 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
                                     }];
     
     return objectsInRange;
+}
+
+- (JXRangeTreeNode*)nodeForRange:(CFRange)range;
+{
+    return [self nodeForRangeWithLowValue:range.location
+                                highValue:range.location + range.length];
 }
 
 - (JXRangeTreeNode*)nodeForRangeWithLowValue:(CFIndex)aLowValue highValue:(CFIndex)aHighValue
