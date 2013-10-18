@@ -22,7 +22,7 @@
     NSSet* setWithObjectA = [NSSet setWithObject:testObjectA];
     
     [rangeTree addObject:testObjectA forRange:NSMakeRange(2, 4 - 2)];
-    XCTAssertEqualObjects([rangeTree objectsInRange:NSMakeRange(0, 1 - 0)], [NSSet set]);
+    XCTAssertEqualObjects([rangeTree objectsInRange:NSMakeRange(0, 1)], [NSSet set]);
     XCTAssertEqualObjects([rangeTree objectsInRange:NSMakeRange(1, 2 - 1)], [NSSet set]);
     XCTAssertEqualObjects([rangeTree objectsInRange:NSMakeRange(2, 3 - 2)], setWithObjectA);
     XCTAssertEqualObjects([rangeTree objectsInRange:NSMakeRange(2, 4 - 2)], setWithObjectA);
@@ -128,12 +128,12 @@
 
     [rangeTree addObject:testObjectA forRange:NSMakeRange(4, 18 - 4)];
     [rangeTree addObject:testObjectB forRange:NSMakeRange(26, 40 - 26)];
-    XCTAssertEqualObjects([rangeTree objectsInRange:NSMakeRange(0, 476 - 0)], setWithObjectsAB);
+    XCTAssertEqualObjects([rangeTree objectsInRange:NSMakeRange(0, 476)], setWithObjectsAB);
     
-    NSSet* nodes = [rangeTree nodesInRange:NSMakeRange(0, 476 - 0)];
+    NSSet* nodes = [rangeTree nodesInRange:NSMakeRange(0, 476)];
     for(JXRangeTreeNode* node in nodes)
         [rangeTree deleteNode:node];
-    XCTAssertEqualObjects([rangeTree objectsInRange:NSMakeRange(0, 476 - 0)], [NSSet set]);
+    XCTAssertEqualObjects([rangeTree objectsInRange:NSMakeRange(0, 476)], [NSSet set]);
 }
 
 - (void)testRecursiveEnumeration
