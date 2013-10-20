@@ -8,15 +8,8 @@
 
 #import "JXRangeTree.h"
 #import "JXRangeTreeNode.h"
+#import "JXRangeUtilities.h"
 
-
-NS_INLINE NSRange JXMakeRangeFromTo(NSUInteger start, NSUInteger end)
-{
-	NSRange r;
-	r.location = start;
-	r.length = end - start;
-	return r;
-}
 
 @interface JXRangeTreeTest : XCTestCase
 @end

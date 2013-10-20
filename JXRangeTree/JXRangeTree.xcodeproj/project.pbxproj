@@ -54,6 +54,7 @@
 		016D22171806B21D00A1C56B /* JXRangeTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXRangeTreeNode.m; sourceTree = "<group>"; usesTabs = 1; };
 		016D221A1806B24100A1C56B /* JXInlineVector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = JXInlineVector.hpp; sourceTree = "<group>"; usesTabs = 1; };
 		016D221B1806B26000A1C56B /* JXRangeTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXRangeTreeTest.m; sourceTree = "<group>"; usesTabs = 1; };
+		3D8AA1F01814454D008A344A /* JXRangeUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXRangeUtilities.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +126,7 @@
 				016D22161806B21D00A1C56B /* JXRangeTreeNode.h */,
 				016D22151806B21D00A1C56B /* JXRangeTreeNode-Private.h */,
 				016D22171806B21D00A1C56B /* JXRangeTreeNode.m */,
+				3D8AA1F01814454D008A344A /* JXRangeUtilities.h */,
 				016D221A1806B24100A1C56B /* JXInlineVector.hpp */,
 				016D21F31806B1F400A1C56B /* MainMenu.xib */,
 				016D21E51806B1F400A1C56B /* Supporting Files */,
