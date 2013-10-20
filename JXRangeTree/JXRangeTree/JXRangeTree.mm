@@ -32,7 +32,7 @@ typedef JXFoundation::inline_vector<JXRangeTreeRecursionNode, 32> JXRangeTreeRec
 
 #pragma mark Managing life cycle
 
-- (id)init
+- (instancetype)init
 {
 	if (self = [super init]) {
 		_nilNode = [[JXRangeTreeNode alloc] initNilNode];

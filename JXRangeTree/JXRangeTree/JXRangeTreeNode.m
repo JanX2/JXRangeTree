@@ -10,9 +10,9 @@
 
 #pragma mark Managing life cycle
 
-- (id)initWithObject:(id)object
-            lowValue:(CFIndex)lowValue
-           highValue:(CFIndex)highValue
+- (instancetype)initWithObject:(id)object
+					  lowValue:(CFIndex)lowValue
+					 highValue:(CFIndex)highValue
 {
 	if (self = [super init]) {
 		_object = object;
@@ -25,7 +25,7 @@
 	return self;
 }
 
-- (id)initNilNode
+- (instancetype)initNilNode
 {
 	if (self = [super init]) {
 		_leftNode = self;
@@ -41,7 +41,7 @@
 	return self;
 }
 
-- (id)initRootNodeWithNilNode:(JXRangeTreeNode *)nilNode
+- (instancetype)initRootNodeWithNilNode:(JXRangeTreeNode *)nilNode
 {
 	if (self = [super init]) {
 		_leftNode = nilNode;

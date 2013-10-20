@@ -10,8 +10,8 @@
 
 #pragma mark Managing life cycle
 
-- (id)initNilNode;
-- (id)initRootNodeWithNilNode:(JXRangeTreeNode *)nilNode;
+- (instancetype)initNilNode;
+- (instancetype)initRootNodeWithNilNode:(JXRangeTreeNode *)nilNode;
 
 #pragma mark Accessing properties
 
