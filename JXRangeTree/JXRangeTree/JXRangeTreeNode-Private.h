@@ -15,9 +15,9 @@
 
 #pragma mark Accessing properties
 
-@property (nonatomic, readwrite, strong) JXRangeTreeNode*    leftNode;
-@property (nonatomic, readwrite, strong) JXRangeTreeNode*    rightNode;
-@property (nonatomic, readwrite, weak)   JXRangeTreeNode*    parentNode;
+@property (nonatomic, readwrite, strong) JXRangeTreeNode *leftNode;
+@property (nonatomic, readwrite, strong) JXRangeTreeNode *rightNode;
+@property (nonatomic, readwrite, weak)   JXRangeTreeNode *parentNode;
 
 @property (nonatomic, readwrite)        CFIndex                 key;
 @property (nonatomic, readwrite)        CFIndex                 high;
@@ -27,10 +27,10 @@
 #pragma mark Overlapping interval tree nodes
 
 - (BOOL)overlapsWithRangeWithLowValue:(CFIndex)lowValue
-                               highValue:(CFIndex)highValue;
+                            highValue:(CFIndex)highValue;
 
 #pragma mark Accessing dot representation
 
-@property (nonatomic, readonly) NSString* dotRepresentation;
+@property (nonatomic, readonly) NSString *dotRepresentation;
 
 @end

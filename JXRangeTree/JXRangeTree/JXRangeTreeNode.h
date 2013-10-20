@@ -16,8 +16,8 @@
 
 #pragma mark Accessing properties
 
-@property (nonatomic, readwrite, strong)   id      object;
-@property (nonatomic, readonly)            CFIndex lowValue;
-@property (nonatomic, readonly)            CFIndex highValue;
+@property (nonatomic, readwrite, strong)   id		object;
+@property (nonatomic, readonly)            CFIndex	lowValue;
+@property (nonatomic, readonly)            CFIndex	highValue;
 
 @end
